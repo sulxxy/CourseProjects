@@ -1,0 +1,61 @@
+/*this part is about the text*/
+#title1 {
+	color: #0099ff;
+ 	font-family: 'Amatic SC', cursive;
+  	font-size: 40px;
+ 	padding: 0px 100px;
+ 	/*line-height:60px*/
+}
+
+#title2 {
+	color: #0099ff;
+ 	font-family: 'Amatic SC', cursive;
+  	font-size: 20px;
+ 	padding: 0px 100px;
+ 	/*line-height:30px*/
+}
+
+/*this part is about the control button*/
+
+.buttonUp {
+    width: 0;
+    height: 0;
+    border-left: 50px solid white;
+    border-bottom: 50px solid #0099ff;
+    border-right: 50px solid white;
+    border-top: 0px;
+    padding: 0;
+}
+.buttonDown {
+	width: 0;
+    height: 0;
+    border-left: 50px solid white;
+	border-right: 50px solid white;
+    border-top: 50px solid #0099ff;
+    border-bottom: 0px;
+    padding: 0;
+}
+.buttonRight {
+    width: 0;
+    height: 0;
+    border-top: 50px solid white;
+    border-left: 50px solid #0099ff;
+    border-bottom: 50px solid white;
+    border-right: 0px;
+    padding:0;
+}
+.buttonLeft {
+    width: 0;
+    height: 0;
+    border-top: 50px solid white;
+    border-right: 50px solid #0099ff;
+    border-bottom: 50px solid white;
+    border-left: 0px;
+    padding:0;
+}
+.buttonCircle {
+    width: 100px; 
+    height: 100px; 
+    background: #0099ff; 
+    border-radius: 50px; 
+}

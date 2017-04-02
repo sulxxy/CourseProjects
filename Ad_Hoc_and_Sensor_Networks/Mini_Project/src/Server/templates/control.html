@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <style>
+            .buttonUp{
+                width: 0;
+                height: 0;
+                border-left: 25px solid white;
+                border-bottom: 25px solid #0099ff;
+                border-right: 25px solid white;
+                border-top: 0px;
+                padding: 0;
+            }
+            .buttonDown{
+                width: 0;
+                height: 0;
+                border-left: 25px solid white;
+                border-right: 25px solid white;
+                border-top: 25px solid #0099ff;
+                border-bottom: 0px;
+                padding: 0;
+            }
+            .buttonRight{
+                width: 0;
+                height: 0;
+                border-top: 25px solid white;
+                border-left: 25px solid #0099ff;
+                border-bottom: 25px solid white;
+                border-right: 0px;
+                padding:0;
+            }
+            .buttonLeft{
+                width: 0;
+                height: 0;
+                border-top: 25px solid white;
+                border-right: 25px solid #0099ff;
+                border-bottom: 25px solid white;
+                border-left: 0px;
+                padding:0;
+            }
+            .buttonCircle {
+                width: 50px; 
+                height: 50px; 
+                background: #0099ff; 
+                border-radius: 50px; 
+            }
+            html,body {
+                height: 100%;
+            }
+        </style>
+        <body>
+        <table align=center cellpadding="10" cellspacing="0" border="0">
+            <form action="{{  url_for('ctrl_wheels') }}" method=post>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <button  name="dir" value="forward" class="buttonUp"></button>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button  name="dir" value="left" class="buttonLeft"></button>
+                    </td>
+                    <td>
+                            <button  name="dir" value="stop" class="buttonCircle"></button>
+                    </td>
+                    <td>
+                            <button  name="dir" value="right" class="buttonRight"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button  name="dir" value="backward" class="buttonDown"></button>
+                    </td>
+                    <td></td>
+                </tr>
+            </form>
+        </table>
+            <br>
+            <form align=center action="{{url_for('set_threshold')}}" method="POST">
+                <input type="text" name="text">
+                <input type="submit" name="my-form" value="set TH">
+            </form>
+    </body>
+</html>
