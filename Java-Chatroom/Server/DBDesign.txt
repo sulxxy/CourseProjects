@@ -1,0 +1,47 @@
+drop table if exists User;
+create table User
+(
+    ID varchar(20),
+    Password varchar(16),
+    Username varchar(16),
+    Gender enum("male", "female"),
+    State enum("Online", "Offline", "Departure", "Busy"),
+    primary key(ID)
+);
+
+drop table if exists Msg;
+create table Msg
+(
+    MsgType enum("SysMsg", "ChatMsg"),
+	MsgID varchar(20),
+    SendFrom varchar(20),
+    SendTo varchar(20),
+    Content Blob,
+    primary key(MsgID),
+    foreign key(SendFrom)
+    references User(ID),
+    foreign key(SendTo)
+    references User(ID)
+);
+
+drop table if exists GroupList;
+create table GroupList
+(
+    GroupID varchar(20),
+    Admin varchar(20),
+    primary key(GroupID),
+    foreign key(Admin)
+    references User(ID)
+);
+drop table if exists UserGroup;
+create table UserGroup
+(
+    UserID varchar(20),
+    GroupID varchar(20),
+    foreign key(UserID)
+    references User(ID),
+    foreign key(GroupID)
+    references GroupList(GroupID)
+ );
+
+
