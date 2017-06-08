@@ -1,0 +1,2 @@
+origin gr (20, 20);
+origin gz (30, 30);
