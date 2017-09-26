@@ -1,0 +1,75 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\title{Machine Intelligence 1 - Exercise 4: Multilayer Perceptrons and Backpropagation Algorithm}
+\author{
+  Liu, Zhiwei\\
+  \texttt{387571}
+  \and
+  Moon, Chulhyun\\
+  \texttt{392865}
+  \and
+  Wenzel, Daniel\\
+  \texttt{365107}
+  \and
+  Ozmen, Cengizhan\\
+  \texttt{388011}
+  \and
+  Pipo, Aiko\\
+  \texttt{390011}
+}
+\date{\today}
+
+
+
+\begin{document}
+
+\maketitle
+
+\hrule
+
+\section*{H4.1: Line search (4 points)}
+
+\subsection*{(a)}
+
+The multi-dimensional Taylor approximation of a fucntion $f$ around a given point $a$ can be expressed using multi-index notation:
+$$T_nf(x;a) = \sum_{|\alpha|=0}^n \frac{(x-a)^\alpha}{\alpha!}D^\alpha f(a)$$
+Applying this to our case and setting $\underline{w}_{t+1} = \underline{w}_{t} - \eta_t\underline{d}_t$ yields:
+\begin{equation*}
+\begin{aligned}
+T_2E^T(\underline{w}_{t+1};\underline{w}_{t}) & = E^T(\underline{w}_{t}) + \sum_{i=1}^d ({\underline{w}_{t+1}}_i - {\underline{w}_{t}}_i)\frac{\delta E^T}{\delta \underline{w}_i} + \sum_{i=1}^d\sum_{j=1}^d ({\underline{w}_{t+1}}_i - {\underline{w}_{t}}_i)({\underline{w}_{t+1}}_j - {\underline{w}_{t}}_j) \frac{\delta E^T}{\delta\underline{w}_{i}\delta\underline{w}_{j}} (\underline{w}_{t})\\
+& = E^T(\underline{w}_{t}) + \sum_{i=1}^d (-\eta_t{\underline{d}_t}_i)\frac{\delta E^T}{\delta \underline{w}_i} + \sum_{i=1}^d\sum_{j=1}^d (-\eta_t{\underline{d}_t}_i)(-\eta_t{\underline{d}_t}_j) \frac{\delta E^T}{\delta\underline{w}_{i}\delta\underline{w}_{j}} (\underline{w}_{t})\\
+& = E^T(\underline{w}_{t}) - \eta_t \underline{d}_t^T(\nabla E^T(\underline{w}_t)) + \eta_t^2 \underline{d}_t^T \underline{H}(\underline{w}_t)\underline{d}_t\\
+\end{aligned}
+\end{equation*}
+
+\subsection*{(b)}
+Using the inequation and $E^T(\underline{w}_{t+1}) \approx T_2E^T(\underline{w}_{t+1}; \underline{w}_t)$, we find:
+\begin{equation*}
+\begin{aligned}
+E^T(\underline{w}_{t+1}) & \leq E^T(\underline{w}_{t})\\
+E^T(\underline{w}_{t}) - \eta_t \underline{d}_t^T(\nabla E^T(\underline{w}_t)) + \eta_t^2 \underline{d}_t^T \underline{H}(\underline{w}_t)\underline{d}_t & \leq E^T(\underline{w}_{t})\\
+- \eta_t \underline{d}_t^T(\nabla E^T(\underline{w}_t)) + \eta_t^2 \underline{d}_t^T \underline{H}(\underline{w}_t)\underline{d}_t & \leq 0\\
+\eta_t^2 \underline{d}_t^T \underline{H}(\underline{w}_t)\underline{d}_t & \leq \eta_t \underline{d}_t^T(\nabla E^T(\underline{w}_t))\\
+\end{aligned}
+\end{equation*}
+For $\underline{d}_t^T \underline{H}(\underline{w}_t)\underline{d}_t > 0$ and $\underline{d}_t^T(\nabla E^T(\underline{w}_t)) < 0$, we can only choose $\eta_t = 0$. In all other cases we can simplify the inequation:
+$$\eta_t \underline{d}_t^T \underline{H}(\underline{w}_t)\underline{d}_t \leq \underline{d}_t^T(\nabla E^T(\underline{w}_t))$$
+We obtain the following cases (for simplicity $H = \underline{d}_t^T \underline{H}(\underline{w}_t)\underline{d}_t$ and $E = \underline{d}_t^T(\nabla E^T(\underline{w}_t))$):
+\begin{itemize}
+\item $\eta_t \leq \frac{E}{H}$, if $H,E < 0$ or $H,E > 0$\\
+\item $\eta_t> 0$ arbitrary, if $H < 0, E > 0$
+\end{itemize}
+
+\subsection*{(c)}
+With this cost function we have
+$$T_2E^T(\underline{w}_{t+1};\underline{w}_{t}) = $$
+
+\end{document}
